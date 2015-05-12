@@ -1,9 +1,22 @@
 import React from 'react';
+import Router, {DefaultRoute, Link, Route, RouteHandler} from 'react-router';
 
 import jQuery from 'jquery';
 global.jQuery = jQuery;
 import bootstrap from 'bootstrap';
 
+// var DefaultRoute = Router.DefaultRoute;
+// var Link = Router.Link;
+// import Route = Router.Route;
+// import RouteHandler from Router.RouteHandler;
+
+var routes = (
+  <Route handler={HelloWorld} path="/" />
+);
+
+Router.run(routes, Router.HistoryLocation, function (Handler) {
+  React.render(<Handler />, document.getElementById('app'));
+});
 
 class HelloWorld extends React.Component{
 

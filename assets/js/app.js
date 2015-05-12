@@ -12,11 +12,31 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var React = _interopRequire(require("react"));
 
+var _reactRouter = require("react-router");
+
+var Router = _interopRequire(_reactRouter);
+
+var DefaultRoute = _reactRouter.DefaultRoute;
+var Link = _reactRouter.Link;
+var Route = _reactRouter.Route;
+var RouteHandler = _reactRouter.RouteHandler;
+
 var jQuery = _interopRequire(require("jquery"));
 
 global.jQuery = jQuery;
 
 var bootstrap = _interopRequire(require("bootstrap"));
+
+// var DefaultRoute = Router.DefaultRoute;
+// var Link = Router.Link;
+// import Route = Router.Route;
+// import RouteHandler from Router.RouteHandler;
+
+var routes = React.createElement(Route, { handler: HelloWorld, path: "/" });
+
+Router.run(routes, Router.HistoryLocation, function (Handler) {
+  React.render(React.createElement(Handler, null), document.getElementById("app"));
+});
 
 var HelloWorld = (function (_React$Component) {
   function HelloWorld() {
@@ -61,4 +81,4 @@ var HelloWorld = (function (_React$Component) {
 React.render(React.createElement(HelloWorld, null), document.getElementById("app"));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"bootstrap":"bootstrap","jquery":"jquery","react":"react"}]},{},[1]);
+},{"bootstrap":"bootstrap","jquery":"jquery","react":"react","react-router":"react-router"}]},{},[1]);
