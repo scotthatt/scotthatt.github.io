@@ -9,9 +9,9 @@ var gulp = require('gulp'),
 
 var vendors = [
   'react',
+  'react-router',
   'bootstrap',
-  'jquery',
-  'lodash'
+  'jquery'
 ];
 
 
@@ -23,7 +23,7 @@ gulp.task('vendors', function () {
 
     stream.bundle()
           .pipe(source('vendors.js'))
-          .pipe(gulp.dest('build/js'));
+          .pipe(gulp.dest('assets/js'));
 
     return stream;
 });
@@ -44,8 +44,8 @@ gulp.task('app', function () {
     });
 
     return stream.bundle()
-                 .pipe(source('data-grid.js'))
-                 .pipe(gulp.dest('build/js'));
+                 .pipe(source('app.js'))
+                 .pipe(gulp.dest('assets/js'));
 
 });
 
