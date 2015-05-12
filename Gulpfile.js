@@ -4,6 +4,8 @@ var gulp = require('gulp'),
     babelify = require('babelify'),
     browserify = require('browserify'),
     browserSync = require('browser-sync'),
+    concat = require('gulp-concat'),
+    less = require('gulp-less'),
     source = require('vinyl-source-stream');
 
 
@@ -49,11 +51,19 @@ gulp.task('app', function () {
 
 });
 
-gulp.task('watch', [], function () {
-  gulp.watch(['./app/**/*.jsx'], ['app', browserSync.reload]);
+gulp.task('less', function () {
+	return gulp.src('./less/styles.less')
+		.pipe(less())
+		.pipe(concat("styles.css"))
+		.pipe(gulp.dest('assets/css'))
 });
 
-gulp.task('browsersync',['vendors','app'], function () {
+gulp.task('watch', [], function () {
+  gulp.watch(['./app/**/*.jsx'], ['app', browserSync.reload]);
+  gulp.watch(['./less/**/*.less'], ['less', browserSync.reload]);
+});
+
+gulp.task('browsersync',['vendors','less','app'], function () {
     browserSync({
   		server: {
   			baseDir: './'
