@@ -61,6 +61,7 @@ gulp.task('less', function () {
 gulp.task('watch', [], function () {
   gulp.watch(['./app/**/*.jsx'], ['app', browserSync.reload]);
   gulp.watch(['./less/**/*.less'], ['less', browserSync.reload]);
+  gulp.watch(['./index.html'], [browserSync.reload]);
 });
 
 gulp.task('browsersync',['vendors','less','app'], function () {
