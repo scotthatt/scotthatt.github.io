@@ -8,6 +8,7 @@ import bootstrap from 'bootstrap';
 
 import Nav from './nav';
 import ImageGrid from './image-grid';
+import ImageDetail from './image-detail';
 import Bio from './bio';
 import Exhibitions from './exhibitions';
 import Statement from './statement';
@@ -15,7 +16,7 @@ import Statement from './statement';
 class App extends React.Component{
   render() {
     return (
-      <div>
+      <div className="row">
         <div className="col-md-3">
           <Nav />
         </div>
@@ -33,6 +34,7 @@ var routes = (
     <Route name="bio" handler={Bio} />
     <Route name="exhibitions" handler={Exhibitions}/>
     <Route name="statement" handler={Statement}/>
+    <Route name="image-detail" path="/image/:imageKey" handler={ImageDetail}/>
   </Route>
 );
 

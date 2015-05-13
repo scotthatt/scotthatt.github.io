@@ -31,6 +31,8 @@ var Nav = _interopRequire(require("./nav"));
 
 var ImageGrid = _interopRequire(require("./image-grid"));
 
+var ImageDetail = _interopRequire(require("./image-detail"));
+
 var Bio = _interopRequire(require("./bio"));
 
 var Exhibitions = _interopRequire(require("./exhibitions"));
@@ -53,7 +55,7 @@ var App = (function (_React$Component) {
       value: function render() {
         return React.createElement(
           "div",
-          null,
+          { className: "row" },
           React.createElement(
             "div",
             { className: "col-md-3" },
@@ -80,7 +82,8 @@ var routes = React.createElement(
   React.createElement(DefaultRoute, { handler: ImageGrid }),
   React.createElement(Route, { name: "bio", handler: Bio }),
   React.createElement(Route, { name: "exhibitions", handler: Exhibitions }),
-  React.createElement(Route, { name: "statement", handler: Statement })
+  React.createElement(Route, { name: "statement", handler: Statement }),
+  React.createElement(Route, { name: "image-detail", path: "/image/:imageKey", handler: ImageDetail })
 );
 
 //bio, exhibition history, artist statement
@@ -90,7 +93,7 @@ Router.run(routes, function (Handler) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./bio":2,"./exhibitions":3,"./image-grid":4,"./nav":5,"./statement":6,"bootstrap":"bootstrap","jquery":"jquery","react":"react","react-router":"react-router"}],2:[function(require,module,exports){
+},{"./bio":2,"./exhibitions":3,"./image-detail":4,"./image-grid":5,"./nav":6,"./statement":7,"bootstrap":"bootstrap","jquery":"jquery","react":"react","react-router":"react-router"}],2:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -119,19 +122,11 @@ var Bio = (function (_React$Component) {
       value: function render() {
         return React.createElement(
           "div",
-          null,
+          { className: "col-md-12" },
           React.createElement(
-            "div",
-            { className: "row" },
-            React.createElement(
-              "div",
-              { className: "col-md-12" },
-              React.createElement(
-                "h1",
-                null,
-                "Bio"
-              )
-            )
+            "h1",
+            null,
+            "Bio"
           )
         );
       }
@@ -172,19 +167,11 @@ var Exhibitions = (function (_React$Component) {
       value: function render() {
         return React.createElement(
           "div",
-          null,
+          { className: "col-md-12" },
           React.createElement(
-            "div",
-            { className: "row" },
-            React.createElement(
-              "div",
-              { className: "col-md-12" },
-              React.createElement(
-                "h1",
-                null,
-                "Previous Exhibitions"
-              )
-            )
+            "h1",
+            null,
+            "Previous Exhibitions"
           )
         );
       }
@@ -203,42 +190,166 @@ var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["defau
 
 var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
-var ImageGrid = (function (_React$Component) {
-  function ImageGrid() {
-    _classCallCheck(this, ImageGrid);
+var _reactRouter = require("react-router");
+
+var Link = _reactRouter.Link;
+var Navigation = _reactRouter.Navigation;
+
+var images = require("../data/images").images;
+
+var ImageDetail = (function (_React$Component) {
+  function ImageDetail(props) {
+    _classCallCheck(this, ImageDetail);
+
+    _get(Object.getPrototypeOf(ImageDetail.prototype), "constructor", this).call(this, props);
+  }
+
+  _inherits(ImageDetail, _React$Component);
+
+  _createClass(ImageDetail, {
+    checkImage: {
+      value: function checkImage(key) {
+        if (!images.hasOwnProperty(key)) {
+          this.context.router.transitionTo("/");
+        }
+      }
+    },
+    render: {
+      value: function render() {
+        this.checkImage(this.props.params.imageKey);
+        var image = images[this.props.params.imageKey];
+        var url = "./assets/images/" + image.file;
+        return React.createElement(
+          "div",
+          { className: "col-md-12" },
+          React.createElement(
+            "div",
+            { className: "pull-right" },
+            React.createElement(
+              Link,
+              { to: "app" },
+              React.createElement("i", { className: "fa fa-times fa-2x" })
+            )
+          ),
+          React.createElement(
+            "div",
+            null,
+            React.createElement(
+              "div",
+              { className: "col-md-6" },
+              React.createElement("img", { src: url, className: "img-responsive" })
+            ),
+            React.createElement(
+              "h1",
+              null,
+              image.title,
+              React.createElement("br", null),
+              React.createElement(
+                "small",
+                null,
+                image.year
+              )
+            ),
+            React.createElement(
+              "h3",
+              null,
+              image.medium
+            )
+          )
+        );
+      }
+    }
+  });
+
+  return ImageDetail;
+})(React.Component);
+
+module.exports = ImageDetail;
+
+ImageDetail.contextTypes = {
+  router: React.PropTypes.func
+};
+
+ImageDetail.mixins = [Navigation];
+
+},{"../data/images":8,"react":"react","react-router":"react-router"}],5:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var Link = require("react-router").Link;
+
+var images = require("../data/images").images;
+
+var ImageGridDisplay = (function (_React$Component) {
+  function ImageGridDisplay() {
+    _classCallCheck(this, ImageGridDisplay);
 
     if (_React$Component != null) {
       _React$Component.apply(this, arguments);
     }
   }
 
-  _inherits(ImageGrid, _React$Component);
+  _inherits(ImageGridDisplay, _React$Component);
+
+  _createClass(ImageGridDisplay, {
+    render: {
+      value: function render() {
+        var url = "./assets/images/" + this.props.image.file;
+        var link = "/image/" + this.props.page;
+        return React.createElement(
+          "div",
+          { className: "col-md-3" },
+          React.createElement(
+            Link,
+            { to: link },
+            React.createElement("image", { src: url, className: "img-responsive" })
+          )
+        );
+      }
+    }
+  });
+
+  return ImageGridDisplay;
+})(React.Component);
+
+var ImageGrid = (function (_React$Component2) {
+  function ImageGrid() {
+    _classCallCheck(this, ImageGrid);
+
+    if (_React$Component2 != null) {
+      _React$Component2.apply(this, arguments);
+    }
+  }
+
+  _inherits(ImageGrid, _React$Component2);
 
   _createClass(ImageGrid, {
     render: {
       value: function render() {
+        var iArr = Object.keys(images);
         return React.createElement(
           "div",
-          null,
-          React.createElement(
-            "div",
-            { className: "row" },
-            React.createElement(
-              "div",
-              { className: "col-md-12" },
-              React.createElement(
-                "h1",
-                null,
-                "Image Grid"
-              )
-            )
-          )
+          { className: "col-md-12" },
+          iArr.map(function (i) {
+            return React.createElement(ImageGridDisplay, { image: images[i], page: i, key: i });
+          })
         );
       }
     }
@@ -249,7 +360,7 @@ var ImageGrid = (function (_React$Component) {
 
 module.exports = ImageGrid;
 
-},{"react":"react"}],5:[function(require,module,exports){
+},{"../data/images":8,"react":"react","react-router":"react-router"}],6:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -280,57 +391,49 @@ var Nav = (function (_React$Component) {
       value: function render() {
         return React.createElement(
           "div",
-          null,
+          { className: "col-md-12" },
           React.createElement(
-            "div",
-            { className: "row" },
+            "h1",
+            { id: "name" },
+            "scott hatt"
+          ),
+          React.createElement(
+            "ul",
+            { className: "list-unstyled" },
             React.createElement(
-              "div",
-              { className: "col-md-12" },
+              "li",
+              null,
               React.createElement(
-                "h1",
-                null,
-                "scott hatt"
-              ),
+                Link,
+                { to: "app" },
+                "Gallery"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
               React.createElement(
-                "ul",
-                null,
-                React.createElement(
-                  "li",
-                  null,
-                  React.createElement(
-                    Link,
-                    { to: "app" },
-                    "Gallery"
-                  )
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  React.createElement(
-                    Link,
-                    { to: "bio" },
-                    "Bio"
-                  )
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  React.createElement(
-                    Link,
-                    { to: "exhibitions" },
-                    "Previous Exhibitions"
-                  )
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  React.createElement(
-                    Link,
-                    { to: "statement" },
-                    "Statement"
-                  )
-                )
+                Link,
+                { to: "bio" },
+                "Bio"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                Link,
+                { to: "exhibitions" },
+                "Previous Exhibitions"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                Link,
+                { to: "statement" },
+                "Statement"
               )
             )
           )
@@ -344,7 +447,7 @@ var Nav = (function (_React$Component) {
 
 module.exports = Nav;
 
-},{"react":"react","react-router":"react-router"}],6:[function(require,module,exports){
+},{"react":"react","react-router":"react-router"}],7:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -397,4 +500,16 @@ var Statement = (function (_React$Component) {
 
 module.exports = Statement;
 
-},{"react":"react"}]},{},[1]);
+},{"react":"react"}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var images = {
+    fig: { title: "Fig", year: 2013, medium: "paint", file: "fig.jpg" },
+    asia: { title: "Asia", year: 2013, medium: "paint", file: "asia.jpg" }
+};
+exports.images = images;
+
+},{}]},{},[1]);

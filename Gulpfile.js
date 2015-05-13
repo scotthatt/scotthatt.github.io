@@ -30,8 +30,6 @@ gulp.task('vendors', function () {
     return stream;
 });
 
-
-
 gulp.task('app', function () {
     var stream = browserify({
             entries: ['./app/app.jsx'],
@@ -51,6 +49,11 @@ gulp.task('app', function () {
 
 });
 
+gulp.task('fonts', function () {
+	gulp.src(['node_modules/font-awesome/fonts/**/*.*'])
+		.pipe(gulp.dest("assets/fonts"));
+});
+
 gulp.task('less', function () {
 	return gulp.src('./less/styles.less')
 		.pipe(less())
@@ -64,7 +67,7 @@ gulp.task('watch', [], function () {
   gulp.watch(['./index.html'], [browserSync.reload]);
 });
 
-gulp.task('browsersync',['vendors','less','app'], function () {
+gulp.task('browsersync',['vendors','less','fonts','app'], function () {
     browserSync({
   		server: {
   			baseDir: './'
