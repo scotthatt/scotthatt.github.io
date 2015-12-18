@@ -8352,7 +8352,23 @@ button.close {
   content: "\f23a";
 }
 /*Typography*/
-#name {
-  font-size: 90px;
-  line-height: 72px;
+body {
+  padding-top: 70px;
+}
+.box {
+  min-height: 260px;
+}
+.box img {
+  margin: auto;
+  max-height: 200px;
+}
+.fullSize {
+  max-height: 700px;
+}
+.image-detail h2 {
+  margin: 0;
+  padding: 0;
+}
+.image-detail p {
+  margin: 0;
 }
