@@ -1,1 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  height: 100vh;
+  overflow: hidden;
 
+  & > nav, & > section {
+    background-color: white;
+    align-self: flex-start;
+    height: (100vh - 3rem);
+    padding: 1rem;
+  }
+}
+
+.wrapper nav {
+  order: 0;
+  flex: 1;
+  background-color: purple;
+}
+
+.wrapper section {
+  order: 1;
+  flex: 3;
+  background-color: green;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+section article {
+  display: flex;
+  margin:1rem;
+  & img {
+    max-height: 13rem;
+    max-width: 13rem;
+  }
+}
