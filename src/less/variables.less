@@ -1,0 +1,14 @@
+/* Typography */
+@font-family-sans-serif: 'Raleway', Helvetica, Arial, sans-serif;
+@headings-font-family: 'Raleway', Helvetica, Arial, sans-serif;
+
+html {
+  font-family: @font-family-sans-serif;
+}
+
+/* Mixins */
+.responsive(@maxWidth; @rules) {
+    @media only screen and (max-width: @maxWidth) {
+        @rules();
+    }
+}
