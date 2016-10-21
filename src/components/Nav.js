@@ -2,7 +2,15 @@ import React from 'react';
 
 const Nav = () => (
   <nav>
-    <h1>left</h1>
+    <h1>Scott Hatt</h1>
+    <ul>
+      <li>Link</li>
+      <li>Link</li>
+      <li>Link</li>
+      <li>Link</li>
+      <li>Link</li>
+      <li>Link</li>
+    </ul>
   </nav>
 );
 
