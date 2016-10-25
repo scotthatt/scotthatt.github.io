@@ -1,0 +1,63 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100vh;
+    overflow: hidden;
+
+    & > nav,
+    & > section {
+        background-color: white;
+        align-self: flex-start;
+        height: (100vh - 3rem);
+        padding: 1rem;
+    }
+}
+
+.wrapper nav {
+    order: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+    max-width: 20vw;
+    min-width: 20vw;
+
+    h1 {
+        font-size: 6vw;
+        text-transform: lowercase;
+        line-height: 5vw;
+        letter-spacing: -.2vw;
+    }
+}
+
+.wrapper section {
+    order: 1;
+    flex: 3;
+    background-color: white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: center;
+}
+
+section article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
+    width: 15vmax;
+    height: 15vmax;
+    margin: 3rem 0 0;
+
+    & img {
+        max-height: 15vmax;
+        max-width: 15vmax;
+    }
+}
