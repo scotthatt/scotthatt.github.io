@@ -1,13 +1,22 @@
 import React, { PropTypes } from 'react';
 
-const Image = ({ image }) => (
-  <article>
-    <img alt='' src={ `assets/images/thumbnails/${image}` } />
-  </article>
-);
+const Image = ({ image, fullSize = false }) => {
+  let fullSizeUrl = `./assets/images/fullSize/${image}`;
+  let thumbsUrl = `./assets/images/thumbnails/${image}-thmb`;
+
+  if (process.env.NODE_ENV !== 'development') {
+    fullSizeUrl = `http://res.cloudinary.com/kellyjandrews/image/upload/v1477231881/${image}`;
+    thumbsUrl = `http://res.cloudinary.com/kellyjandrews/image/upload/t_thumbs/v1477231880/${image}`;
+  }
+
+  return (<article>
+    <img alt='' src={ `${fullSize ? fullSizeUrl : thumbsUrl}.jpg` } />
+  </article>);
+};
 
 Image.propTypes = {
   image: PropTypes.string,
+  fullSize: PropTypes.bool,
 };
 
 export default Image;
