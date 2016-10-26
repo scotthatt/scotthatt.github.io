@@ -9,9 +9,11 @@ const Image = ({ image, fullSize = false }) => {
     thumbsUrl = `http://res.cloudinary.com/kellyjandrews/image/upload/t_thumbs/v1477231880/${image}`;
   }
 
-  return (<article>
-    <img alt='' src={ `${fullSize ? fullSizeUrl : thumbsUrl}.jpg` } />
-  </article>);
+  return (
+    <article>
+      <img alt='' src={ `${fullSize ? fullSizeUrl : thumbsUrl}.jpg` } />
+    </article>
+  );
 };
 
 Image.propTypes = {

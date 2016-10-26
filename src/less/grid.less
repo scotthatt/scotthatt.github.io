@@ -1,62 +1,39 @@
 .wrapper {
-  display: flex;
-  flex-wrap:nowrap;
-  height: 100vh;
-  overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    overflow: hidden;
 
-
-  flex-direction: row;
-  
-  & > nav, & > section {
-    background-color: white;
-    align-self: flex-start;
-    height: (100vh - 3rem);
-    padding: 1rem;
-  }
+    & > nav,
+    & > section {
+        align-self: flex-start;
+        
+    }
 }
 
 .wrapper nav {
-  order: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  align-content: center;
-  justify-content: center;
-  max-width: 20vw;
-  min-width: 20vw;
-  h1 {
-    font-size: 8vw;
-    text-transform: lowercase;
-    line-height: 7vw;
-    letter-spacing: -.2vw
-  }
+    order: 0;
+    display: flex;
+    h1 {
+        text-transform: lowercase;
+    }
 }
 
 .wrapper section {
-  order: 1;
-  flex: 3;
-  background-color: white;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: center;
+    order: 1;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: center;
 }
 
 section article {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background-color: white;
-  width: 15vmax;
-  height: 15vmax;
-  margin: 3rem 0 0 0;
-  & img {
-    max-height: 15vmax;
-    max-width: 15vmax;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
 }

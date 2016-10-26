@@ -1,0 +1,35 @@
+.wrapper {
+    flex-direction: column;
+    & > nav,
+    & > section {
+        width: 100vw;
+    }
+}
+
+.wrapper nav {
+    background-color: green;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    height: 10vh;
+    h1 {
+        font-size: 12vw;
+        line-height: 5vw;
+        letter-spacing: -.2vw;
+    }
+}
+
+.wrapper section {
+    flex: 5;
+}
+
+section article {
+    width: 50vmax;
+    height: 50vmax;
+    margin: 3rem 0 0;
+
+    & img {
+        max-height: 50vmax;
+        max-width: 50vmax;
+    }
+}
