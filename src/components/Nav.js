@@ -3,7 +3,7 @@ import React from 'react';
 const Nav = () => (
   <nav>
     <h1>Scott Hatt</h1>
-    <ul>
+    <ul className='closed'>
       <li>Link</li>
       <li>Link</li>
       <li>Link</li>
