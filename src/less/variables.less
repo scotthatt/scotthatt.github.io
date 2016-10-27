@@ -18,3 +18,52 @@ h1 {
         @rules();
     }
 }
+
+.mobile-nav {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 10vmin;
+  h1 {
+      font-size: 9vmin;
+      margin-top: 1vmin;
+      letter-spacing: -.2vw;
+  }
+  .menu {
+    height: 100vh;
+    width: 70vmin;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    transition: right 0.2s ease;
+    box-shadow: -5px 0px 18px -5px rgba(0,0,0,0.65);
+    ul {
+      padding:5vh;
+      position: absolute;
+      top: 0;
+    }
+    button {
+      border: none;
+      box-shadow: -5px 0px 18px -5px rgba(0,0,0,0.65);
+      content: " ";
+      background-image: url('/assets/images/icons/close.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: white;
+      position: relative;
+      outline: none;
+    }
+    &.closed {
+      box-shadow: none;
+      border: none;
+      right: -70vmin;
+      button {
+        box-shadow: none;
+        border: none;
+        background-image: url('/assets/images/icons/bars.svg');
+      }
+    }
+  }
+}
