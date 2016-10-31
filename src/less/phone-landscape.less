@@ -8,12 +8,20 @@
 
 .wrapper nav {
   .mobile-nav;
+  h1 {
+      font-size: 5vw;
+      margin-top: 2.5vh;
+  }
   .menu {
+    width: 70vh;
     button {
       height: 8vh;
       width: 10vh;
-      left: -10vmin;
-      top: 1vmin;
+      left: -10vh;
+      top: 2.5vh;
+    }
+    &.closed {
+     right: -70vh;
     }
   }
 }
@@ -23,12 +31,6 @@
 }
 
 section article {
-    width: 50vmax;
-    height: 50vmax;
-    margin: 1rem 0 2rem 0;
-
-    & img {
-        max-height: 50vmax;
-        max-width: 50vmax;
-    }
+  .mobileGridStyles;
+  margin: 1rem 2rem 2rem 0;
 }

@@ -2,7 +2,7 @@
 @font-family-sans-serif: 'Raleway', Helvetica, Arial, sans-serif;
 @headings-font-family: 'Raleway', Helvetica, Arial, sans-serif;
 
-html, body {height: 100%;}
+html, body {height: 100vh; width:100vw; overflow: hidden;}
 
 html {
   font-family: @font-family-sans-serif;
@@ -23,16 +23,14 @@ h1 {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 0 1rem;
-  height: 10vmin;
+  // padding: 0 1rem;
+  height: 10vh;
   h1 {
-      font-size: 9vmin;
-      margin-top: 1vmin;
+      padding-left: 1rem;
       letter-spacing: -.2vw;
   }
   .menu {
     height: 100vh;
-    width: 70vmin;
     z-index: 100;
     position: absolute;
     right: 0;
@@ -46,7 +44,7 @@ h1 {
     }
     button {
       border: none;
-      box-shadow: -5px 0px 18px -5px rgba(0,0,0,0.65);
+      box-shadow: -6px 0px 15px -5px rgba(0,0,0,0.65);
       content: " ";
       background-image: url('/assets/images/icons/close.svg');
       background-size: contain;
@@ -58,12 +56,20 @@ h1 {
     &.closed {
       box-shadow: none;
       border: none;
-      right: -70vmin;
       button {
         box-shadow: none;
         border: none;
         background-image: url('/assets/images/icons/bars.svg');
       }
     }
+  }
+}
+
+.mobileGridStyles {
+  width: 50vmax;
+  height: 50vmax;
+  & img {
+      max-height: 50vmax;
+      max-width: 50vmax;
   }
 }
