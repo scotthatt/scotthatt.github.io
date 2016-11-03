@@ -10,9 +10,9 @@ const Image = ({ image, fullSize = false }) => {
   }
 
   return (
-    <article>
+    <figure>
       <img alt='' src={ `${fullSize ? fullSizeUrl : thumbsUrl}.jpg` } />
-    </article>
+    </figure>
   );
 };
 

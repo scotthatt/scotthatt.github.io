@@ -13,9 +13,12 @@
     "react/jsx-curly-spacing": [2, "always"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": [0],
-    "no-plusplus": 0
+    "react/forbid-prop-types": [1, { "forbid": ['any'] }],
+    "no-plusplus": 0,
+    "no-console": 0,
   },
   "globals": {
-    "document": false
+    "document": false,
+    "window": true,
   }
 }

@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-
+import React, { Component, PropTypes } from 'react';
 import Nav from './Nav';
-import ImageGrid from './ImageGrid';
 
 export default class App extends Component {
   render() {
     return (
       <main className='wrapper'>
         <Nav />
-        <ImageGrid />
+        { this.props.children }
       </main>
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.node,
+};

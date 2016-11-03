@@ -69,5 +69,5 @@ export default [
   { title: '50', height: '3.5', width: '4', medium: 'collage and acrylic on Aquarelle', year: '2015', location: 'Studio', image: 'Hatt_2015_0143_w', gallery: ['2015'], order: '44' },
   { title: 'A Longer Range Ranger', height: '20', width: '16', medium: 'collage, acrylic, and pencil on panel', year: '2015', location: 'Studio', image: 'Hatt_2015_0172_w', gallery: ['2015'], order: '45' },
   { title: '65 Bond DKB', height: '', width: '', medium: 'collage, acrylic, and pencil on #300 cold press Arches Aquarelle', year: '2011', location: 'PC', image: 'Hatt_2015_0123_w', gallery: '', order: '' },
-  { title: 'Flint ', height: '', width: '', medium: 'collage, acrylic, photo on canvas', year: '2008', location: 'studio', image: 'Hatt_2015_0124_w', gallery: '', order: '' },
+  { title: 'Flint', height: '', width: '', medium: 'collage, acrylic, photo on canvas', year: '2008', location: 'studio', image: 'Hatt_2015_0124_w', gallery: '', order: '' },
 ];

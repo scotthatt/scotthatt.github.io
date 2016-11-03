@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Menu from './Menu';
 
 const Nav = () => (
   <nav>
-    <h1>Scott Hatt</h1>
+    <h1><Link to='/'>Scott Hatt</Link></h1>
     <Menu />
   </nav>
 );

@@ -35,13 +35,14 @@
     "eslint-plugin-react": "^6.4.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "lodash.find": "^4.6.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "history": "^2.1.2",
+    "lodash.kebabcase": "^4.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1"
