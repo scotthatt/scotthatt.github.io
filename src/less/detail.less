@@ -1,8 +1,11 @@
-section article.image-detail {
-  position: relative;
+section.image-detail {
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+}
+section.image-detail article {
+  height: 100%;
   background-color: white;
   button {
     content: " ";
@@ -14,24 +17,33 @@ section article.image-detail {
     outline: none;
     height: 10vmin;
     width: 10vmin;
-    position: absolute;
-    right: 1vmin;
-    top: 0;
+    float: right;
+    margin-right: 1vmin;
   }
-  article {
-    margin-top:15vmin;
-    margin-bottom: 1vmin;
-  }
-  h1 {
-    font-size: 8vmin;
-    span {
-      font-size: 40%;
-      font-style: italic;
-      margin-left: .5rem;
+  figure{
+    clear:both;
+    width: 100vmin;
+    max-height: 70vmax;
+    margin: 5rem 0 0 0;
+    img {
+      max-height: 50vmax;
+      max-width: 70vmin;
     }
   }
-  h2 {
-    font-size:4vmin;
-    font-style: italic;
+  summary {
+    padding: 5vmin 15vmin;
+    h1 {
+      font-size: 7vmin;
+      span {
+        font-size: 50%;
+        font-style: italic;
+        margin-left: .5rem;
+      }
+    }
+    h2 {
+      font-size:3.5vmin;
+      font-style: italic;
+    }
   }
+
 }

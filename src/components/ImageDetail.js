@@ -35,17 +35,18 @@ class ImageDetail extends Component {
       title,
       location,
     } = this.state.image;
-    console.log(image);
     if (!image) return <NotFound type='Image' />;
     return (
-      <section>
-        <article className='image-detail'>
+      <section className='image-detail'>
+        <article>
           <button onClick={ this.clickHandler } />
           <Image fullSize image={ image } />
-          <h1>{ title }{year ? <span>{ year }</span> : null }</h1>
-          {medium ? <h2 className='medium'>{ medium }</h2> : null}
-          {height && width ? <h2 className='dimensions'>{ height } x { width }</h2> : null}
-          {location ? <h2 className='location'>{ location }</h2> : null}
+          <summary>
+            <h1>{ title }{year ? <span>{ year }</span> : null }</h1>
+            {medium ? <h2 className='medium'>{ medium }</h2> : null}
+            {height && width ? <h2 className='dimensions'>{ height } x { width }</h2> : null}
+            {location ? <h2 className='location'>{ location }</h2> : null}
+          </summary>
         </article>
       </section>
     );
